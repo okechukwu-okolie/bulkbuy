@@ -17,18 +17,23 @@ const appUserSchema = new mongoose.Schema({
     },
     roles:[{
         type: String,
-        default:'Buyer' // Admin , Super-Admin
+        enum:['user', 'admin', 'super-admin'],// this limits the roles to those listed in the array
+        default:'user'
     }],
-    active:{
+    isActive:{
         type:Boolean,
         default:true
     },
-    //this is the parent reference
+    //this is the parent reference. the id defines who the parent is.
     controlledBy:{
         type:mongoose.Schema.Types.ObjectId,
         ref: 'AppUser',//because AppUser is called before initialisation its put in quotation mark. if the reverses is the case, the quote marks can be removed.
         default: null
-    }
+    },
+    subordinates:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'AppUser'
+    }]
 },
 {timestamps: true}
 )
