@@ -17,7 +17,7 @@ const appUserSchema = new mongoose.Schema({
     },
     roles:[{
         type: String,
-        enum:['user', 'admin', 'super-admin'],// this limits the roles to those listed in the array
+        enum:['user', 'driver', 'admin', 'super-admin'],// this limits the roles to those listed in the array
         default:'user'
     }],
     isActive:{
