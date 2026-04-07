@@ -1,17 +1,18 @@
 import express from 'express'
-import {  createUser, creatingSubordinates, deleteUser, getUsers, login } from '../controllers/userController.js'
-import { auth } from '../middleware/authMiddleware.js'
+import {  createUser, deleteUser, getOne, getUsers } from '../controllers/userController.js'
+// import { auth } from '../middleware/authMiddleware.js'
 import { authorize } from '../middleware/authoriseMiddleware.js'
 
 
 const userRoute = express.Router()
 
 
-userRoute.get('/', auth,authorize('admin','super-admin'),  getUsers)
+userRoute.get('/',  getUsers)
+userRoute.get('/:id',  getOne)
 userRoute.post('/', createUser)
-userRoute.post('/login', login)
+// userRoute.post('/login', login)
 userRoute.delete('/:id', deleteUser)
-userRoute.post('/create-subordinate/:id', creatingSubordinates)
+// userRoute.post('/create-subordinate/:id', creatingSubordinates)
 
 
 
