@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Splash from './pages/Splash.jsx'
-import SignIn from './pages/SIgnIn.jsx'
+import SignIn from './pages/SIgnUp.jsx'
 
 const App = () => {
 

@@ -34,14 +34,14 @@ export const getUsers =async(req,res)=>{
 //CREATE USER
 export const createUser =async(req,res)=>{
 
-  const {name,email,password,roles, isActive} = req.body
+  const {username,email,password,roles, isActive} = req.body
 
   try {
     const existingUser = await AppUser.findOne({email})
     if(existingUser) return res.status(400).json({message:'user already exists'})
     const hashedPassword = await bcrypt.hash(password, 10)
     const user = new AppUser({
-      name,
+      name: username,
       email,
       password: hashedPassword,
       roles,

@@ -9,7 +9,7 @@ const userRoute = express.Router()
 
 userRoute.get('/',  getUsers)
 userRoute.get('/:id',  getOne)
-userRoute.post('/', createUser)
+userRoute.post('/create-user', createUser)
 // userRoute.post('/login', login)
 userRoute.delete('/:id', deleteUser)
 // userRoute.post('/create-subordinate/:id', creatingSubordinates)
